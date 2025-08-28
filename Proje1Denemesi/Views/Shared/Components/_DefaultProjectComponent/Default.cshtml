@@ -1,0 +1,62 @@
+﻿
+
+@model List<Category>
+
+
+@*
+    default project component
+*@
+
+
+
+<section id="portfolio" class="portfolio section">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Projelerim</h2>
+        <p>Geliştirdiğim projelere göz atabilirsiniz</p>
+    </div><!-- End Section Title -->
+
+    <div class="container">
+
+        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+
+            <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
+                <li data-filter="*" class="filter-active">Tümü</li>
+
+                @foreach (var category in Model)
+                {
+                    <li data-filter=".filter-@category.CategoryId">@category.CategoryName</li>
+                }
+                
+            </ul><!-- End Portfolio Filters -->
+
+            <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+
+                @foreach(var cateory in Model)
+                {
+                    
+                    @foreach(var project in cateory.Projects)
+                    {
+                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-@cateory.CategoryId">
+                            <img src="@project.ImgUrl" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <h4>@project.ProjectName</h4>
+                                <p>@project.Desciption</p>
+                                <a href="@project.ImgUrl" title="@project.ProjectName" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                                <a href="@project.GitHubUrl" target="_blank" title="Github Linki" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                            </div>
+                        </div>
+                
+                        <!-- End Portfolio Item -->
+                    }
+                }
+
+               
+            </div><!-- End Portfolio Container -->
+
+        </div>
+
+    </div>
+
+</section><!-- /Portfolio Section -->

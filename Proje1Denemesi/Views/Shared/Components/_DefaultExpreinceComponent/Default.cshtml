@@ -1,0 +1,25 @@
+﻿
+@model List<Expreince>
+
+@*
+   default experience component
+*@
+
+
+@foreach(var expreince in Model)
+{
+    <div class="resume-item">
+        <h4>@expreince.Title</h4>
+        <h5>@expreince.StartYear - @(string.IsNullOrEmpty(expreince.EndYear) ? "Devam ediyor" : expreince.EndYear)</h5>
+        <p><em> @expreince.Company ,@expreince.City</em></p>
+        <ul>
+            <li style="word-break:break-word; white-space:normal; line-height:1.6; margin-bottom:8px;">
+                @expreince.Description
+            </li>
+          </ul>
+    </div>
+
+    <!-- Edn Resume Item -->
+}
+
+

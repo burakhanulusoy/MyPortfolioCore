@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/UILayout/Index.cshtml";
+}
+
+<!-- Hero Section -->
+@await Component.InvokeAsync("_DefaultBannerComponent") 
+<!-- About Section -->
+@await Component.InvokeAsync("_DefaultAboutComponent")
+<!-- Resume Section -->
+
+<section id="resume" class="resume section">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Öz Geçmişim</h2>
+        <p>Henüz staj yapma fırsatım olmadı ancak yazılım dünyasında kendimi geliştirmek için sürekli çalışıyorum.</p>
+    </div><!-- End Section Title -->
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="resume-title">Özet</h3>
+
+                <div class="resume-item pb-0">
+                    <h4>Burak Han Ulusoy</h4>
+                    <p><em>Öğrenci</em></p>
+                    <ul>
+                        <li>Keçiören / Ankara</li>
+                        <li>+90 505 986 05 32 </li>
+                        <li>burakhanulusoy18@gmail.com  /  burakhanulusoyy@outlook.com</li>
+                    </ul>
+                </div>
+
+                <h3 class="resume-title">Eğitim Hayatım</h3>
+
+
+                @await Component.InvokeAsync("_DefaultEducationComponent")
+
+            </div>
+
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="resume-title">Profosyonel İş Deneyimlerim</h3>
+
+
+                @await Component.InvokeAsync("_DefaultExpreinceComponent")
+              
+            </div>
+
+        </div>
+
+    </div>
+
+</section><!-- /Resume Section -->
+<!-- Skills Section -->
+@await Component.InvokeAsync("_DefaultSkillComponent")
+<!-- Stats Section -->
+@await Component.InvokeAsync("_DefaultStaticsComponent")
+<!-- Testimonials Section -->
+@await Component.InvokeAsync("_DefaultTestimonialComponent")
+<!-- Portfolio Section -->
+@await Component.InvokeAsync("_DefaultProjectComponent")
+<!-- Contact Section -->
+
+
+
+
+
+<section id="contact" class="contact section">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+        <h2>İletişim</h2>
+        <p>Benim ile aşağıdaki bilgileri kullanarak iletişim kurabilirsiniz.</p>
+    </div><!-- End Section Title -->
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+
+
+            @await Component.InvokeAsync("_DefaultContactComponent")
+
+            @await Component.InvokeAsync("_DefaultSendMessageComponent")
+
+
+
+        </div>
+
+    </div>
+
+</section><!-- /Contact Section -->
+
+
+
+
+
+
+

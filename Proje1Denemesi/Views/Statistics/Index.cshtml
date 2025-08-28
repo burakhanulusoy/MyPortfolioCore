@@ -1,0 +1,120 @@
+﻿
+@{
+    ViewData["Title"] = "İstatistikler";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+
+<div class="row">
+
+
+    <div class="col-md-6 col-xl-3">
+        <div class="card">
+            <div class="card-body" >
+                <h5 class="mb-2 f-w-400 text-muted">Toplam Proje Sayısı</h5>
+                <h3 class="mb-3" >
+                    @ViewBag.TotalProject
+                </h3>
+              
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="col-md-6 col-xl-3">
+        <div class="card">
+            <div class="card-body" >
+                <h5 class="mb-2 f-w-400 text-muted">Yeteneklerimin Ortalamsı</h5>
+                <h3 class="mb-3" >
+                    @ViewBag.AvarageSkill
+                </h3>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="col-md-6 col-xl-3">
+        <div class="card">
+            <div class="card-body" >
+                <h5 class="mb-2 f-w-400 text-muted">Okunmayan Mesaj Sayısı</h5>
+                <h3 class="mb-3" >
+                    @ViewBag.UnReadMessage
+                </h3>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="col-md-6 col-xl-3">
+        <div class="card">
+            <div class="card-body" >
+                <h5  class="mb-2 f-w-400 text-muted">Son Mesajı Gönderen Kişi</h5>
+                <h3 class="mb-3" >
+                    @ViewBag.LastMessageOwner
+                </h3>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
+
+
+
+ <div class="row">
+
+
+    <div class="col-md-6 col-xl-3">
+        <div class="card social-widget-card bg-primary">
+            <div class="card-body">
+                <h3 class="text-white m-0">@ViewBag.ReferanceAvarage </h3>
+                <span class="m-t-10">Referanslarım Puan Ortalaması</span>
+                <i class="fa fa-star"></i>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-6 col-xl-3">
+        <div class="card social-widget-card bg-info">
+            <div class="card-body">
+                <h3 class="text-white m-0">@ViewBag.WorkYear </h3>
+                <span class="m-t-10">Çalışma Sürem</span>
+                <i class="fa fa-suitcase"></i>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-6 col-xl-3">
+        <div class="card social-widget-card bg-dark">
+            <div class="card-body">
+                <h3 class="text-white m-0">@ViewBag.companyCount</h3>
+                <span class="m-t-10">Çalıştığım Şirket Sayısı</span>
+                <i class="fa fa-building"></i>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-6 col-xl-3">
+        <div class="card social-widget-card bg-danger">
+            <div class="card-body">
+                <h3 class="text-white m-0">@ViewBag.TheMostMaxReview</h3>
+                <span class="m-t-10">En Yüksek Puan Veren Kişi</span>
+                <i class="fa fa-user"></i>
+            </div>
+        </div>
+    </div>
+
+
+         </div>

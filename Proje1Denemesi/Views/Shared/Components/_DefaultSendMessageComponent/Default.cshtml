@@ -1,0 +1,72 @@
+﻿@model UserMessage
+
+
+@*
+   deffault send message component
+*@
+
+
+<div class="col-lg-7">
+    <form id="contactForm" method="post" asp-action="SendMessage" asp-controller="Default"  data-aos="fade-up" data-aos-delay="200">
+        <div class="row gy-4">
+
+            <div class="col-md-6">
+                <label for="name-field" class="pb-2">İsminiz</label>
+                <input type="text" asp-for="Name"  class="form-control" required="">
+            </div>
+
+            <div class="col-md-6">
+                <label for="email-field" class="pb-2">E-Mailiniz</label>
+                <input type="email" class="form-control" asp-for="Email"  required="">
+            </div>
+
+            <div class="col-md-12">
+                <label for="subject-field" class="pb-2">Konu</label>
+                <input type="text" class="form-control" asp-for="Subject"  required="">
+            </div>
+
+            <div class="col-md-12">
+                <label for="message-field" class="pb-2">Mesajınız</label>
+                <textarea class="form-control" asp-for="Message" rows="10"  required=""></textarea>
+            </div>
+
+            <div class="col-md-12 text-center">
+             
+                <button class="btn btn-outline-success" onclick="sendMessage()" type="submit">Mesajı Gönder</button>
+            </div>
+
+        </div>
+    </form>
+</div><!-- End Contact Form -->
+
+
+
+
+<script>
+    const form = document.getElementById('contactForm');
+
+    form.addEventListener('submit', function(e) {
+        if (!form.checkValidity()) {
+            e.preventDefault();
+            e.stopPropagation();
+            form.classList.add('was-validated');
+        } else {
+            e.preventDefault(); // Formu durdur
+            Swal.fire({
+                title: "Mesajınız Gönderildi!",
+                icon: "success",
+                confirmButtonText: "Tamam"
+            }).then(() => {
+                form.submit(); // Tamam'a tıklayınca gerçekten gönder
+            });
+        }
+    });
+</script>
+
+
+
+
+
+
+
+

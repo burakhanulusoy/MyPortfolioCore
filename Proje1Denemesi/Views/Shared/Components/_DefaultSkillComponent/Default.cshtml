@@ -1,0 +1,43 @@
+﻿
+@model List<Skill>
+
+
+@*
+   default skill component
+*@
+<section id="skills" class="skills section">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Yeteneklerim</h2>
+        <p>Bildiğim Teknolojiler Ve Programlama Dilleri</p>
+    </div><!-- End Section Title -->
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row skills-content skills-animation">
+
+
+              @foreach(var skill in Model)
+                {
+                    <div class="col-lg-6">
+                    <div class="progress">
+                        <span class="skill"><span>@skill.Title</span> <i class="val">@skill.Value%</i></span>
+                        <div class="progress-bar-wrap">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="@skill.Value" aria-valuemin="0" aria-valuemax="100"
+                            style="width:@skill.Value%;"></div>
+                        </div>
+                    </div>
+                    </div>
+                    <!-- End Skills Item -->
+                }
+
+               
+
+
+
+        </div>
+
+    </div>
+
+</section><!-- /Skills Section -->

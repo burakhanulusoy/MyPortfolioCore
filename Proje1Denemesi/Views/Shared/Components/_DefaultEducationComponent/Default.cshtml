@@ -1,0 +1,20 @@
+﻿
+@model List<Education>
+
+
+@*
+    default education component
+*@
+
+@foreach(var education in Model)
+{
+    <div class="resume-item">
+        <h4>@education.SchoolName</h4>
+        <h5>@education.StartYear - @(string.IsNullOrEmpty(education.EndYear) ? "Devam Ediyor" : education.EndYear )</h5>
+        <p><em>@education.Department</em></p>
+        <p>@education.Description</p>
+    </div>
+
+    <!-- Edn Resume Item -->
+}
+

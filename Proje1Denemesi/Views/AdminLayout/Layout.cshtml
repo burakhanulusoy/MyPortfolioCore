@@ -1,0 +1,109 @@
+﻿
+@{
+    Layout = null;
+}
+
+ <!DOCTYPE html>
+<html lang="en">
+<!-- [Head] start -->
+@await Component.InvokeAsync("_AdninLayoutHeadComponents")
+<!-- [Head] end -->
+<!-- [Body] Start -->
+
+<body data-pc-preset="preset-1" data-pc-direction="ltr" data-pc-theme="light">
+  <!-- [ Pre-loader ] start -->
+<div class="loader-bg">
+  <div class="loader-track">
+    <div class="loader-fill"></div>
+  </div>
+</div>
+<!-- [ Pre-loader ] End -->
+ <!-- [ Sidebar Menu ] start -->
+@await Component.InvokeAsync("_AdminLayoutSideBarComponents")
+<!-- [ Sidebar Menu ] end -->
+
+
+
+<!-- [ Header Topbar ] start -->
+
+    @await Component.InvokeAsync("_AdminLayoutHeaderComponents")
+<!-- [ Header ] end -->
+
+
+
+
+
+  <!-- [ Main Content ] start -->
+
+    <div class="pc-container">
+        <div class="pc-content">
+            <!-- [ breadcrumb ] start -->
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h3 class="m-b-10">@ViewData["Title"]</h3>
+                            </div>
+                            <br />
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Ana Sayfa</a></li>
+                                <li class="breadcrumb-item"><a href="#">@ViewData["Title"]</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- [ breadcrumb ] end -->
+            <!-- [ Main Content ] start -->
+            @RenderBody()
+
+        </div>
+    </div>
+  <!-- [ Main Content ] end -->
+
+
+
+    @await Component.InvokeAsync("_AdminLayoutFooterComponents")
+
+
+  <!-- [Page Specific JS] start -->
+  <script src="~/Mantis-Bootstrap-1.0.0/dist/assets/js/plugins/apexcharts.min.js"></script>
+  <script src="~/Mantis-Bootstrap-1.0.0/dist/assets/js/pages/dashboard-default.js"></script>
+  <!-- [Page Specific JS] end -->
+  <!-- Required Js -->
+  <script src="~/Mantis-Bootstrap-1.0.0/dist/assets/js/plugins/popper.min.js"></script>
+  <script src="~/Mantis-Bootstrap-1.0.0/dist/assets/js/plugins/simplebar.min.js"></script>
+  <script src="~/Mantis-Bootstrap-1.0.0/dist/assets/js/plugins/bootstrap.min.js"></script>
+  <script src="~/Mantis-Bootstrap-1.0.0/dist/assets/js/fonts/custom-font.js"></script>
+  <script src="~/Mantis-Bootstrap-1.0.0/dist/assets/js/pcoded.js"></script>
+  <script src="~/Mantis-Bootstrap-1.0.0/dist/assets/js/plugins/feather.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  
+  
+  
+  
+  <script>layout_change('light');</script>
+  
+  
+  
+  
+  <script>change_box_container('false');</script>
+  
+  
+  
+  <script>layout_rtl_change('false');</script>
+  
+  
+  <script>preset_change("preset-1");</script>
+  
+  
+  <script>font_change("Public-Sans");</script>
+  
+    
+
+</body>
+<!-- [Body] end -->
+
+</html> 

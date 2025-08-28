@@ -1,0 +1,64 @@
+﻿@model Project
+@{
+    ViewData["Title"] = "Proje Güncelle";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+
+
+
+<form method="post">
+
+    <input type="hidden" asp-for="ProjectId" />
+
+    <div class="form-group">
+
+        <label>Proje Görsel Url</label>
+        <input type="text" asp-for="ImgUrl" class="form-control" />
+        <span class="text-danger" asp-validation-for="ImgUrl"></span>
+    </div>
+
+    <div class="form-group">
+
+        <label>Proje Adı</label>
+        <input type="text" asp-for="ProjectName" class="form-control" />
+        <span class="text-danger" asp-validation-for="ProjectName"></span>
+
+    </div>
+
+    <div class="form-group">
+
+        <label>Proje Açıklamsı</label>
+        <textarea type="text" asp-for="Desciption" class="form-control" rows="4"> </textarea>
+
+    </div>
+
+    <div class="form-group">
+
+        <label>Proje GitHub Url</label>
+        <input type="url" asp-for="GitHubUrl" class="form-control" />
+        <span class="text-danger" asp-validation-for="GitHubUrl"></span>
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label>Proje Kategorisi</label>
+        <select class="form-control" asp-for="CategoryId" asp-items="@ViewBag.Categories">
+            <option disabled >Kategori Seçiniz</option>
+        </select>
+        <span class="text-danger" asp-validation-for="CategoryId"></span>
+
+    </div>
+
+
+    <button class="btn btn-outline-success">Güncelle</button>
+
+
+
+
+
+</form>
+
+
