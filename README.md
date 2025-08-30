@@ -71,6 +71,11 @@ Web arayüzü **Bootstrap ve CSS** ile tasarlanmış olup, responsive ve kullan�
 
 ---
 ## 📸 Ekran Görüntüleri
+Dilerseniz Video'yu Linkedln hesabımdan izlebilirsiniz
+https://www.linkedin.com/in/burakhanulusoy/
+
+
+
 <img width="1908" height="950" alt="Ekran görüntüsü 2025-08-30 152907" src="https://github.com/user-attachments/assets/33f4fe58-636c-44b9-8d5f-d29f52828501" />
 <img width="1900" height="949" alt="Ekran görüntüsü 2025-08-30 152920" src="https://github.com/user-attachments/assets/5b4a63c4-7c9f-4388-aaaf-ca5a3d07d6c6" />
 <img width="1886" height="946" alt="Ekran görüntüsü 2025-08-30 152941" src="https://github.com/user-attachments/assets/99a4bfbc-24d3-4644-a349-e45ef38ddb41" />
