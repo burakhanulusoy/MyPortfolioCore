@@ -8,57 +8,58 @@
 }
 
 
-<table class="table table-hover table-bordered">
+<div class="container my-4">
+    <h3 class="mb-3">Projelerim</h3>
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered align-middle text-center shadow-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Proje Resmi</th>
+                    <th>Proje Adı</th>
+                    <th>Proje Açıklaması</th>
+                    <th>GitHub Url</th>
+                    <th>Kategori</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    count++;
+                    <tr class="align-middle">
+                        <th>@count</th>
+                        <td>
+                            <img src="@item.ImgUrl" class="img-thumbnail" style="height:100px; width:auto;" />
+                        </td>
+                        <td class="fw-bold">@item.ProjectName</td>
+                        <td style="max-width:300px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="@item.Desciption">@item.Desciption</td>
+                        <td>
+                            <a href="@item.GitHubUrl" target="_blank" class="text-decoration-none">
+                                <i class="bi bi-github me-1"></i>GitHub
+                            </a>
+                        </td>
+                        <td>@item.Category.CategoryName</td>
+                        <td>
+                            <button onclick="deleteProject(@item.ProjectId)" class="btn btn-outline-danger btn-sm mb-1">
+                                <i class="bi bi-trash"></i> Sil
+                            </button>
+                            <a href="/Project/UpdateProject/@item.ProjectId" class="btn btn-outline-primary btn-sm mb-1">
+                                <i class="bi bi-pencil-square"></i> Güncelle
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 
-    <tr>
-        <th>#</th>
-        <th>Proje Resmi</th>
-        <th>Proje Adı</th>
-        <th>Proje Açıklaması</th>
-        <th>GitHub Url</th>
-        <th>Kategori Adı</th> 
-        <th>İşlemler</th>
-    </tr>
-
-
-    @foreach(var item in Model)
-    {
-        count++;
-        <tr>
-
-            <th>@count</th>
-            <td> <img src="@item.ImgUrl" style="height:auto;width:75px"  />  </td>
-            <td>@item.ProjectName</td>
-            <td>@item.Desciption</td>
-            <td><a href="@item.GitHubUrl">GitHub Linki</a></td>
-            <td>@item.Category.CategoryName</td>
-
-            <td>
-                <button onclick="deleteProject(@item.ProjectId)"  class="btn btn-outline-danger">Sil</button>
-                <a href="/Project/UpdateProject/@item.ProjectId" class="btn btn-outline-primary">Güncelle</a>
-            </td>
-
-
-
-
-        </tr>
-
-
-
-
-
-
-    }
-
-
-
-
-</table>
-
-
-<a href="/Project/AddProject" class="btn btn-outline-success">Yeni Proje Ekle</a>
-
-
+    <div class="text-center mt-3">
+        <a href="/Project/AddProject" class="btn btn-success btn-lg">
+            <i class="bi bi-plus-circle"></i> Yeni Proje Ekle
+        </a>
+    </div>
+</div>
 
 <script>
 

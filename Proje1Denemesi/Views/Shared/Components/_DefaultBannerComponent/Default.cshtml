@@ -1,5 +1,5 @@
 ﻿
-@model List<Banner>
+@model Banner
 
 @*
     default banner component
@@ -8,19 +8,18 @@
 
 <section id="hero" class="hero section">
 
-    @foreach(var banner in Model)
-    {
-        <img src="@banner.CoverImgUrl" alt="" data-aos="fade-in"  >
+    
+        <img src="@Model.CoverImgUrl" alt="" data-aos="fade-in"  >
 
         <div class="container text-center" data-aos="zoom-out" data-aos-delay="100">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <h2 style="color:deepskyblue">@banner.NameSurname</h2>
-                    <p style="color:white">@banner.Title</p>
+                    <h2 style="color:deepskyblue">@Model.NameSurname</h2>
+                    <p style="color:white">@Model.Title</p>
                     <a href="#about" class="btn-get-started">About Me</a>
                 </div>
             </div>
         </div>
-    }
+    
 
 </section><!-- /Hero Section -->

@@ -1,0 +1,95 @@
+﻿@model About
+@{
+    ViewData["Title"] = "Hakkımda Ekleme";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+
+
+
+
+<form method="post">
+
+    <div class="form-group">
+        <label>Başlık</label>
+        <input asp-for="Title" class="form-control" type="text" />
+        <span class="text-danger" asp-validation-for="Title"></span>
+
+    </div>
+
+    <div class="form-group">
+        <label>Resim Url'i'</label>
+        <input asp-for="ImgUrl" class="form-control" type="text" />
+        <span class="text-danger" asp-validation-for="ImgUrl"></span>
+
+    </div>
+
+    <div class="form-group">
+        <label>Açıklama</label>
+        <input asp-for="Description" class="form-control" type="text" />
+        <span class="text-danger" asp-validation-for="Description"></span>
+
+    </div>
+
+
+    <div class="form-group">
+        <label>Doğum Tarihi</label>
+        <input asp-for="BitrhDate" class="form-control" type="date"  />
+        <span class="text-danger" asp-validation-for="BitrhDate"></span>
+
+    </div>
+
+    <div class="form-group">
+        <label>İlçe/İl</label>
+        <input asp-for="City" class="form-control" type="text" />
+        <span class="text-danger" asp-validation-for="City"></span>
+
+    </div>
+    <div class="form-group">
+        <label>Telefon</label>
+        <input asp-for="Phone" class="form-control" type="text" />
+        <span class="text-danger" asp-validation-for="Phone"></span>
+
+    </div>
+
+
+
+    <div class="form-group">
+        <label>E-Mail</label>
+        <input asp-for="Email" class="form-control" type="text" />
+        <span class="text-danger" asp-validation-for="Email"></span>
+
+    </div>
+
+    <div class="form-group">
+        <label>Website Adresi</label>
+        <input asp-for="WebSite" class="form-control" type="text" />
+        <span class="text-danger" asp-validation-for="WebSite"></span>
+
+    </div>
+    <div class="form-group">
+        <label>Eğitim Seviyesi</label>
+        <input asp-for="Graduation" class="form-control" type="text" />
+        <span class="text-danger" asp-validation-for="Graduation"></span>
+
+    </div>
+
+    <div class="form-group">
+        <label>Freelance Çalışmaya Uygun Musunuz?</label><br />
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" asp-for="IsAvailable" value="true" id="availableYes" />
+            <label class="form-check-label" for="availableYes">Evet</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" asp-for="IsAvailable" value="false" id="availableNo" />
+            <label class="form-check-label" for="availableNo">Hayır</label>
+        </div>
+        <span class="text-danger" asp-validation-for="IsAvailable"></span>
+    </div>
+
+    <button class="btn btn-outline-primary">Ekle</button>
+
+
+
+</form>
+

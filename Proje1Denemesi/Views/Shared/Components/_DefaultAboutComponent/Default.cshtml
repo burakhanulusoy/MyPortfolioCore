@@ -1,5 +1,5 @@
 ﻿
-@model List<About>
+@model About
 
 @*
     default about component
@@ -8,7 +8,7 @@
 
 @{
     int todayYear = DateTime.Now.Year;
-    int age = 0;
+    int age = todayYear - Model.BitrhDate.Year;
 }
 
 <section id="about" class="about section">
@@ -21,9 +21,9 @@
 
     <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-     @foreach(var about in Model)
-        {
-            age = todayYear - about.BitrhDate.Year;
+     
+           
+
 
             
 
@@ -32,37 +32,37 @@
 
             <div class="row gy-4 justify-content-center">
                 <div class="col-lg-4">
-                    <img src="/images/img1.jpg" class="img-fluid" alt=""
+                    <img src="/images/img1.jpg" class="img-fluid" alt="Burak Han Ulusoy"  title="Burak Han"
                          style="width:400px; height:400px; object-fit:cover; border-radius:8px;">
 
                 </div>
                 <div class="col-lg-8 content">
-                    <h2>@about.Title </h2>
+                    <h2>@Model.Title </h2>
                     <br />
                     <div class="row">
                         <div class="col-lg-6">
                             <ul>
-                                <li><i class="bi bi-chevron-right"></i> <strong>Doğum Yılı:</strong> <span>@about.BitrhDate.ToString("dd.MM.yyyy")</span></li>
-                                <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <a href="#">@about.WebSite</a></li>
-                                <li><i class="bi bi-chevron-right"></i> <strong>Telefon:</strong> <span>@about.Phone</span></li>
-                                <li><i class="bi bi-chevron-right"></i> <strong>Şehir:</strong> <span> @about.City</span></li>
+                                <li><i class="bi bi-chevron-right"></i> <strong>Doğum Yılı:</strong> <span>@Model.BitrhDate.ToString("dd.MM.yyyy")</span></li>
+                                <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <a href="#">@Model.WebSite</a></li>
+                                <li><i class="bi bi-chevron-right"></i> <strong>Telefon:</strong> <span>@Model.Phone</span></li>
+                                <li><i class="bi bi-chevron-right"></i> <strong>Şehir:</strong> <span> @Model.City</span></li>
                             </ul>
                         </div>
                         <div class="col-lg-6">
                             <ul>
                                 <li><i class="bi bi-chevron-right"></i> <strong>Yaş:</strong> <span>@age</span></li>
-                                <li><i class="bi bi-chevron-right"></i> <strong>Derece:</strong> <span>@about.Graduation</span></li>
-                                <li><i class="bi bi-chevron-right"></i> <strong>E-mail:</strong> <span>@about.Email</span></li>
-                                <li><i class="bi bi-chevron-right"></i> <strong>Freelance Çalışmaya Uygunluk:</strong> <span>@(about.IsAvailable ? "Uygun" : "Uygun Değil")</span></li>
+                                <li><i class="bi bi-chevron-right"></i> <strong>Derece:</strong> <span>@Model.Graduation</span></li>
+                                <li><i class="bi bi-chevron-right"></i> <strong>E-mail:</strong> <span>@Model.Email</span></li>
+                                <li><i class="bi bi-chevron-right"></i> <strong>Freelance Çalışmaya Uygunluk:</strong> <span>@(Model.IsAvailable ? "Uygun" : "Uygun Değil")</span></li>
                             </ul>
                         </div>
                     </div>
                     <p class="py-3">
-                        @about.Description
+                        @Model.Description
                     </p>
                 </div>
             </div>
-        }
+        
 
     </div>
 

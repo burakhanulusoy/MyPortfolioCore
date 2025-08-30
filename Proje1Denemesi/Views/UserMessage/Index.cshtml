@@ -1,0 +1,88 @@
+﻿@model List<UserMessage>
+
+@{
+    ViewData["Title"] = "Mesajlar";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+<div class="list-group">
+    @foreach (var msg in Model)
+    {
+        var itemClass = !msg.IsRead ? "list-group-item-primary" : "list-group-item-light";
+        <a href="javascript:void(0);"
+           class="list-group-item list-group-item-action d-flex justify-content-between align-items-center @itemClass mb-2 shadow-sm rounded"
+           data-bs-toggle="modal" data-bs-target="#messageModal@msg.UserMessageId">
+
+            <div>
+                <strong>@msg.Name</strong> - <span class="text-muted">@msg.Subject</span>
+            </div>
+
+            <div class="d-flex align-items-center gap-2">
+                @if (!msg.IsRead)
+                {
+                    <span class="badge bg-info text-dark">Yeni</span>
+                }
+                <button onclick="markAsRead(@msg.UserMessageId)" class="btn btn-sm btn-outline-success" title="Okundu">
+                    <i class="bi bi-check2-circle"></i>
+                </button>
+                <button onclick="deleteMsg(@msg.UserMessageId)" class="btn btn-sm btn-outline-danger" title="Sil">
+                    <i class="bi bi-trash"></i>
+                </button>
+            </div>
+        </a>
+
+        <!-- Modal -->
+        <div class="modal fade" id="messageModal@msg.UserMessageId" tabindex="-1" aria-labelledby="messageModalLabel@msg.UserMessageId" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content shadow-lg border-primary">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title" id="messageModalLabel@msg.UserMessageId">@msg.Subject</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Kapat"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Gönderen:</strong> @msg.Name (@msg.Email)</p>
+                        <p><strong>Mesaj:</strong></p>
+                        <p class="border p-3 rounded bg-light">@msg.Message</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <i class="bi bi-x-circle"></i> Kapat
+                        </button>
+                        <button onclick="deleteMsg(@msg.UserMessageId)" class="btn btn-danger">
+                            <i class="bi bi-trash"></i> Sil
+                        </button>
+                        @if (!msg.IsRead)
+                        {
+                            <button onclick="markAsRead(@msg.UserMessageId)" class="btn btn-success">
+                                <i class="bi bi-check2-circle"></i> Okundu
+                            </button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<script>
+    function deleteMsg(id){
+        Swal.fire({
+            title: "Silmek istediğinize emin misiniz?",
+            text: "Bu işlemi geri alamazsınız!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Evet, Sil!",
+            cancelButtonText: "İptal"
+        }).then((result)=>{
+            if(result.isConfirmed){
+                window.location.href = "/UserMessage/Delete/"+id;
+            }
+        });
+    }
+
+    function markAsRead(id){
+        window.location.href = "/UserMessage/MessageRead/"+id;
+    }
+</script>

@@ -1,0 +1,104 @@
+﻿@model List<Expreince>
+
+@{
+    ViewData["Title"] = "Deneyimlerim";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+    int count = 0;
+}
+
+<div class="container my-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="fw-bold text-warning">Deneyimlerim</h2>
+        <a href="/Expreince/AddExpreince" class="btn btn-warning btn-lg">
+            <i class="bi bi-plus-circle"></i> Yeni Deneyim Ekle
+        </a>
+    </div>
+
+    <div class="table-responsive shadow-sm rounded">
+        <table class="table table-hover align-middle">
+            <thead class="table-warning">
+                <tr>
+                    <th>#</th>
+                    <th>Başlık</th>
+                    <th>Başlama Tarihi</th>
+                    <th>Bitiş Tarihi</th>
+                    <th>Şirket</th>
+                    <th>Şehir</th>
+                    <th>Açıklama</th>
+                    <th class="text-center">İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    count++;
+                    <tr>
+                        <th>@count</th>
+                        <td>@item.Title</td>
+                        <td>@item.StartYear</td>
+                        <td>@(string.IsNullOrEmpty(item.EndYear) ? "Devam Ediyor" : item.EndYear)</td>
+                        <td>@item.Company</td>
+                        <td>@item.City</td>
+                        <td>@item.Description</td>
+                        <td class="text-center">
+                            <button onclick="deleteEx(@item.ExpreinceId)" class="btn btn-outline-danger btn-sm me-2">
+                                <i class="bi bi-trash"></i> Sil
+                            </button>
+                            <a href="/Expreince/UpdateExpreince/@item.ExpreinceId" class="btn btn-outline-success btn-sm">
+                                <i class="bi bi-pencil-square"></i> Güncelle
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    function deleteEx(id){
+        Swal.fire({
+            title: "Silmek istediğinize emin misiniz?",
+            text: "Bu işlemi geri alamazsınız!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#ffc107",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Evet, Sil!",
+            cancelButtonText: "İptal"
+        }).then((result) => {
+            if(result.isConfirmed){
+                Swal.fire({
+                    title: "Silindi!",
+                    text: "İstenilen veri silindi.",
+                    icon: "success",
+                    timer: 1500,
+                    showConfirmButton: false
+                }).then(() => {
+                    window.location.href = "/Expreince/DeleteExpreince/" + id;
+                });
+            }
+        });
+    }
+</script>
+
+<style>
+    .table-hover tbody tr:hover {
+        background-color: #fff3cd !important;
+        transform: scale(1.02);
+        transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    }
+
+    .btn i {
+        margin-right: 4px;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .table thead th {
+        border-bottom: 2px solid #ffc107;
+    }
+</style>

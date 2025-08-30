@@ -1,0 +1,131 @@
+﻿@model List<Contact>
+
+@{
+    ViewData["Title"] = "İletişim";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+    int count = 0;
+}
+
+<div class="container my-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="fw-bold text-primary">İletişim Bilgileri</h2>
+        <button onclick="addContact()" class="btn btn-success btn-lg">
+            <i class="bi bi-plus-circle"></i> Yeni İletişim Ekle
+        </button>
+    </div>
+
+    <div class="table-responsive shadow-sm rounded">
+        <table class="table table-hover align-middle">
+            <thead class="table-primary">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Telefon</th>
+                    <th scope="col">E-Mail</th>
+                    <th scope="col">Adres</th>
+                    <th scope="col">Harita</th>
+                    <th scope="col" class="text-center">İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    count++;
+                    <tr>
+                        <th scope="row">@count</th>
+                        <td>@item.Phone</td>
+                        <td>@item.Email</td>
+                        <td>@item.Adress</td>
+                        <td>
+                            <iframe src="@item.MapUrl" frameborder="0"
+                                    style="border:0; width: 150px; height: 100px;"
+                                    allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </td>
+                        <td class="text-center">
+                            <button onclick="deleteContact(@item.ContactId)" class="btn btn-outline-danger btn-sm me-2">
+                                <i class="bi bi-trash"></i> Sil
+                            </button>
+                            <a href="/Contact/UpdateContact/@item.ContactId" class="btn btn-outline-primary btn-sm">
+                                <i class="bi bi-pencil-square"></i> Güncelle
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    function deleteContact(id){
+        Swal.fire({
+            title: "Silmek istediğinize emin misiniz?",
+            text: "Bu işlemi geri alamazsınız!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Evet, Sil!",
+            cancelButtonText: "İptal"
+        }).then((result) => {
+            if(result.isConfirmed){
+                Swal.fire({
+                    title: "Silindi!",
+                    text: "İstenilen veri silindi.",
+                    icon: "success",
+                    timer: 1500,
+                    showConfirmButton: false
+                }).then(() => {
+                    window.location.href = "/Contact/RemoveContact/" + id;
+                });
+            }
+        });
+    }
+
+    function addContact(){
+        Swal.fire({
+            title: "Eklerseniz web sayfanızda eklenecek kısım gözükür, Emin Misiniz?",
+            text: "Var olanı güncelleyebilirsiniz!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Evet, Ekle!",
+            cancelButtonText: "İptal"
+        }).then((result) => {
+            if(result.isConfirmed){
+                Swal.fire({
+                    title: "Ekleme sayfası yükleniyor...",
+                    text: "Artık web alanında bu sayfa gözükecek.",
+                    icon: "success",
+                    timer: 2000,
+                    timerProgressBar: true,
+                    showConfirmButton: false
+                }).then(() => {
+                    window.location.href = "/Contact/AddContact";
+                });
+            }
+        });
+    }
+</script>
+
+<style>
+    .table-hover tbody tr:hover {
+        background-color: #e3f2fd !important;
+        transform: scale(1.02);
+        transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    }
+
+    .btn i {
+        margin-right: 4px;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .table thead th {
+        border-bottom: 2px solid #0d6efd;
+    }
+</style>

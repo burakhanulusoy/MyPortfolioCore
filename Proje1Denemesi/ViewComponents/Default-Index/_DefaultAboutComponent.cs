@@ -8,7 +8,7 @@ namespace Portfolio.Web.ViewComponents.Default_Index
     {
         public IViewComponentResult Invoke()
         {
-            var values = context.Abouts.ToList();
+            var values = context.Abouts.OrderByDescending(x=>x.AboutId).FirstOrDefault();
             return View(values);
         }
     }

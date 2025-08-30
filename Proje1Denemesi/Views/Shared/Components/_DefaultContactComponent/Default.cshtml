@@ -1,4 +1,4 @@
-﻿@model List<Contact>
+﻿@model Contact
 
 
 @*
@@ -9,14 +9,13 @@
 
 <div class="col-lg-5">
 
-    @foreach(var item in Model)
-    {
+    
         <div class="info-wrap">
             <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
                 <i class="bi bi-geo-alt flex-shrink-0"></i>
                 <div>
                     <h3>Adres</h3>
-                    <p>@item.Adress</p>
+                    <p>@Model.Adress</p>
                 </div>
             </div><!-- End Info Item -->
 
@@ -24,7 +23,7 @@
                 <i class="bi bi-telephone flex-shrink-0"></i>
                 <div>
                     <h3>Telefon</h3>
-                    <p>@item.Phone</p>
+                    <p>@Model.Phone</p>
                 </div>
             </div><!-- End Info Item -->
 
@@ -32,11 +31,11 @@
                 <i class="bi bi-envelope flex-shrink-0"></i>
                 <div>
                     <h3>E-Mail</h3>
-                    <p>@item.Email</p>
+                    <p>@Model.Email</p>
                 </div>
             </div><!-- End Info Item -->
 
-            <iframe src="@item.MapUrl" frameborder="0" style="border:0; width: 100%; height: 270px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="@Model.MapUrl" frameborder="0" style="border:0; width: 100%; height: 270px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
-    }
+    
 </div>

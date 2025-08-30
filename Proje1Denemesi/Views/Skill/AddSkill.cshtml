@@ -1,0 +1,29 @@
+﻿@model Skill
+@{
+    ViewData["Title"] = "Yetenek ekle";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+
+<form method="post">
+
+    <div class="form-group">
+        <label>Yetenek Adı</label>
+        <input asp-for="Title" class="form-control" type="text" />
+        <span class="text-danger" asp-validation-for="Title"></span>
+
+    </div>
+    <div class="form-group">
+        <label>Yetnek Değeri</label>
+        <input asp-for="Value" class="form-control" type="text" />
+        <span class="text-danger" asp-validation-for="Value"></span>
+
+    </div>
+
+
+    <button class="btn btn-outline-primary">Ekle</button>
+
+
+
+</form>
+

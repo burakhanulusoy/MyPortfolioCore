@@ -9,7 +9,7 @@ namespace Proje1Denemesi.ViewComponents.Default_Index
 
         public IViewComponentResult Invoke()
         {
-            var values = context.Contacts.ToList();
+            var values = context.Contacts.OrderByDescending(x=>x.ContactId).FirstOrDefault();
             return View(values);
         }
 

@@ -1,0 +1,55 @@
+﻿
+@model Testimonial
+
+@{
+    ViewData["Title"] = "Referans Ekle";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+
+<form method="post">
+
+
+    <div class="form-group">
+
+        <label>Ad - Soyad</label>
+        <input type="text" asp-for="Name" class="form-control" />
+        <span class="text-danger" asp-validation-for="Name"></span>
+    </div>
+
+    <div class="form-group">
+
+        <label>Yorum</label>
+        <textarea type="text" asp-for="Comment" class="form-control" rows="5"> </textarea>
+        <span class="text-danger" asp-validation-for="Comment"></span>
+
+    </div>
+
+    <div class="form-group">
+
+        <label>Resim Url'i'</label>
+        <input type="url" asp-for="ImageUrl" class="form-control" />
+        <span class="text-danger" asp-validation-for="ImageUrl"></span>
+
+
+    </div>
+
+    <div class="form-group">
+
+        <label>Kişinin Ünvanı</label>
+        <input type="text" asp-for="Title" class="form-control" />
+        <span class="text-danger" asp-validation-for="Title"></span>
+
+    </div>
+    <div class="form-group">
+
+        <label>Yıldız Puanı</label>
+        <input type="number" asp-for="Review" class="form-control" />
+        <span class="text-danger" asp-validation-for="Review"></span>
+
+    </div>
+
+
+    <button class="btn btn-outline-success">Kaydet</button>
+
+</form>

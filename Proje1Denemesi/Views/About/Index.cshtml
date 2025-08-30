@@ -1,0 +1,141 @@
+﻿@model List<About>
+
+@{
+    ViewData["Title"] = "Hakkımda";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+    int count = 0;
+}
+
+<div class="container my-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="fw-bold text-success">Hakkımda Bilgileri</h2>
+        <button onclick="addAbout()" class="btn btn-success btn-lg">
+            <i class="bi bi-plus-circle"></i> Yeni Hakkımda Ekle
+        </button>
+    </div>
+
+    <div class="table-responsive shadow-sm rounded">
+        <table class="table table-hover align-middle">
+            <thead class="table-success">
+                <tr>
+                    <th>#</th>
+                    <th>Başlık</th>
+                    <th>Resim</th>
+                    <th>Açıklama</th>
+                    <th>Doğum Tarihi</th>
+                    <th>Şehir</th>
+                    <th>Telefon</th>
+                    <th>E-Mail</th>
+                    <th>Website</th>
+                    <th>Öğrenim</th>
+                    <th>Freelance</th>
+                    <th class="text-center">İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    count++;
+                    <tr>
+                        <th>@count</th>
+                        <td>@item.Title</td>
+                        <td>
+                            <img src="@item.ImgUrl" class="img-fluid rounded" alt=""
+                                 style="width:120px; height:120px; object-fit:cover;">
+                        </td>
+                        <td>@item.Description</td>
+                        <td>@item.BitrhDate.ToString("dd.MM.yyyy")</td>
+                        <td>@item.City</td>
+                        <td>@item.Phone</td>
+                        <td>@item.Email</td>
+                        <td>@item.WebSite</td>
+                        <td>@item.Graduation</td>
+                        <td>@(item.IsAvailable ? "Uygundur" : "Uygun Değil")</td>
+                        <td class="text-center">
+                            <button onclick="deleteAbout(@item.AboutId)" class="btn btn-outline-danger btn-sm me-2">
+                                <i class="bi bi-trash"></i> Sil
+                            </button>
+                            <a href="/About/UpdateAbout/@item.AboutId" class="btn btn-outline-primary btn-sm">
+                                <i class="bi bi-pencil-square"></i> Güncelle
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    function deleteAbout(id){
+        Swal.fire({
+            title: "Silmek istediğinize emin misiniz?",
+            text: "Bu işlemi geri alamazsınız!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#198754",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Evet, Sil!",
+            cancelButtonText: "İptal"
+        }).then((result) => {
+            if(result.isConfirmed){
+                Swal.fire({
+                    title: "Silindi!",
+                    text: "İstenilen veri silindi.",
+                    icon: "success",
+                    timer: 1500,
+                    showConfirmButton: false
+                }).then(() => {
+                    window.location.href = "/About/RemoveAbout/" + id;
+                });
+            }
+        });
+    }
+
+    function addAbout(){
+        Swal.fire({
+            title: "Eklerseniz web sayfanızda gözükecek, Emin Misiniz?",
+            text: "Var olanı güncelleyebilirsiniz!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#198754",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Evet, Ekle!",
+            cancelButtonText: "İptal"
+        }).then((result) => {
+            if(result.isConfirmed){
+                Swal.fire({
+                    title: "Ekleme sayfası yükleniyor...",
+                    text: "Artık web alanında bu sayfa gözükecek.",
+                    icon: "success",
+                    timer: 2000,
+                    timerProgressBar: true,
+                    showConfirmButton: false
+                }).then(() => {
+                    window.location.href = "/About/AddAbout";
+                });
+            }
+        });
+    }
+</script>
+
+<style>
+    .table-hover tbody tr:hover {
+        background-color: #d1e7dd !important;
+        transform: scale(1.02);
+        transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    }
+
+    .btn i {
+        margin-right: 4px;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .table thead th {
+        border-bottom: 2px solid #198754;
+    }
+</style>

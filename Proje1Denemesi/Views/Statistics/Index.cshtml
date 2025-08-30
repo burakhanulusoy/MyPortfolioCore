@@ -1,120 +1,256 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "İstatistikler";
     Layout = "~/Views/AdminLayout/Layout.cshtml";
 }
 
+<div class="container my-4">
+    <div class="row g-4">
 
-<div class="row">
-
-
-    <div class="col-md-6 col-xl-3">
-        <div class="card">
-            <div class="card-body" >
-                <h5 class="mb-2 f-w-400 text-muted">Toplam Proje Sayısı</h5>
-                <h3 class="mb-3" >
-                    @ViewBag.TotalProject
-                </h3>
-              
+        <!-- 1. Toplam Proje Sayısı -->
+        <div class="col-md-3">
+            <div class="card shadow-lg border-0 rounded-3 p-3 stat-card">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="text-muted">Toplam Proje Sayısı</h6>
+                        <h2 class="fw-bold">@ViewBag.TotalProject</h2>
+                    </div>
+                    <div class="icon-box bg-primary text-white">
+                        <i class="fa fa-folder-open"></i>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 
-
-
-    <div class="col-md-6 col-xl-3">
-        <div class="card">
-            <div class="card-body" >
-                <h5 class="mb-2 f-w-400 text-muted">Yeteneklerimin Ortalamsı</h5>
-                <h3 class="mb-3" >
-                    @ViewBag.AvarageSkill
-                </h3>
-
+        <!-- 2. Yetenekler Ortalaması -->
+        <div class="col-md-3">
+            <div class="card shadow-lg border-0 rounded-3 p-3 stat-card">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="text-muted">Yetenekler Ortalaması</h6>
+                        <h2 class="fw-bold">@ViewBag.AvarageSkill</h2>
+                    </div>
+                    <div class="icon-box bg-success text-white">
+                        <i class="fa fa-star"></i>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 
-
-
-    <div class="col-md-6 col-xl-3">
-        <div class="card">
-            <div class="card-body" >
-                <h5 class="mb-2 f-w-400 text-muted">Okunmayan Mesaj Sayısı</h5>
-                <h3 class="mb-3" >
-                    @ViewBag.UnReadMessage
-                </h3>
-
+        <!-- 3. Okunmayan Mesaj Sayısı -->
+        <div class="col-md-3">
+            <div class="card shadow-lg border-0 rounded-3 p-3 stat-card">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="text-muted">Okunmayan Mesaj Sayısı</h6>
+                        <h2 class="fw-bold">@ViewBag.UnReadMessage</h2>
+                    </div>
+                    <div class="icon-box bg-danger text-white">
+                        <i class="fa fa-envelope"></i>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 
-
-
-
-    <div class="col-md-6 col-xl-3">
-        <div class="card">
-            <div class="card-body" >
-                <h5  class="mb-2 f-w-400 text-muted">Son Mesajı Gönderen Kişi</h5>
-                <h3 class="mb-3" >
-                    @ViewBag.LastMessageOwner
-                </h3>
-
+        <!-- 4. Son Mesajı Gönderen Kişi -->
+        <div class="col-md-3">
+            <div class="card shadow-lg border-0 rounded-3 p-3 stat-card">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="text-muted">Son Mesajı Gönderen Kişi</h6>
+                        <h2 class="fw-bold">@ViewBag.LastMessageOwner</h2>
+                    </div>
+                    <div class="icon-box bg-info text-white">
+                        <i class="fa fa-user"></i>
+                    </div>
+                </div>
             </div>
         </div>
+
+        <!-- 5. Referanslar Ortalama -->
+        <div class="col-md-3">
+            <div class="card shadow-lg border-0 rounded-3 p-3 stat-card">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="text-muted">Referanslar Ortalama</h6>
+                        <h2 class="fw-bold">@ViewBag.ReferanceAvarage</h2>
+                    </div>
+                    <div class="icon-box bg-primary text-white">
+                        <i class="fa fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. Çalışma Sürem -->
+        <div class="col-md-3">
+            <div class="card shadow-lg border-0 rounded-3 p-3 stat-card">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="text-muted">Çalışma Sürem</h6>
+                        <h2 class="fw-bold">@ViewBag.WorkYear</h2>
+                    </div>
+                    <div class="icon-box bg-info text-white">
+                        <i class="fa fa-suitcase"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7. Çalıştığım Şirket Sayısı -->
+        <div class="col-md-3">
+            <div class="card shadow-lg border-0 rounded-3 p-3 stat-card">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="text-muted">Çalıştığım Şirket Sayısı</h6>
+                        <h2 class="fw-bold">@ViewBag.companyCount</h2>
+                    </div>
+                    <div class="icon-box bg-dark text-white">
+                        <i class="fa fa-building"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8. En Yüksek Puan Veren -->
+        <div class="col-md-3">
+            <div class="card shadow-lg border-0 rounded-3 p-3 stat-card">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="text-muted">En Yüksek Puan Veren</h6>
+                        <h2 class="fw-bold">@ViewBag.TheMostMaxReview</h2>
+                    </div>
+                    <div class="icon-box bg-danger text-white">
+                        <i class="fa fa-user"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 9. Yetenek Sayım -->
+        <div class="col-md-3">
+            <div class="card shadow-lg border-0 rounded-3 p-3 stat-card">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="text-muted">Yetenek Sayım</h6>
+                        <h2 class="fw-bold">@ViewBag.SkillCount</h2>
+                    </div>
+                    <div class="icon-box bg-success text-white">
+                        <i class="ti ti-users"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 10. Okunan Mesaj Sayısı -->
+        <div class="col-md-3">
+            <div class="card shadow-lg border-0 rounded-3 p-3 stat-card">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="text-muted">Okunan Mesaj Sayısı</h6>
+                        <h2 class="fw-bold">@ViewBag.ReadMessage</h2>
+                    </div>
+                    <div class="icon-box bg-primary text-white">
+                        <i class="ti ti-world"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 11. Yorum Yapan Kişi Sayısı -->
+        <div class="col-md-3">
+            <div class="card shadow-lg border-0 rounded-3 p-3 stat-card">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="text-muted">Yorum Yapan Kişi Sayısı</h6>
+                        <h2 class="fw-bold">@ViewBag.messagaCount</h2>
+                    </div>
+                    <div class="icon-box bg-danger text-white">
+                        <i class="ti ti-calendar-stats"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 12. En Uzun Çalıştığım Şirket -->
+        <div class="col-md-3">
+            <div class="card shadow-lg border-0 rounded-3 p-3 stat-card">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="text-muted">En Uzun Çalıştığım Şirket</h6>
+                        <h2 class="fw-bold">@ViewBag.longCompany</h2>
+                    </div>
+                    <div class="icon-box bg-danger text-white">
+                        <i class="fa fa-building"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 13. En Uzun Çalışma Yılım -->
+        <div class="col-md-3">
+            <div class="card shadow-lg border-0 rounded-3 p-3 stat-card">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="text-muted">En Uzun Çalışma Yılım</h6>
+                        <h2 class="fw-bold">@ViewBag.longtime</h2>
+                    </div>
+                    <div class="icon-box bg-dark text-white">
+                        <i class="fa fa-hourglass"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 14. En Düşük Puanı Veren -->
+        <div class="col-md-3">
+            <div class="card shadow-lg border-0 rounded-3 p-3 stat-card">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="text-muted">En Düşük Puanı Veren</h6>
+                        <h2 class="fw-bold">@ViewBag.Review</h2>
+                    </div>
+                    <div class="icon-box bg-info text-white">
+                        <i class="fa fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 15. Admin Sayısı -->
+        <div class="col-md-3">
+            <div class="card shadow-lg border-0 rounded-3 p-3 stat-card">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="text-muted">Admin Sayısı</h6>
+                        <h2 class="fw-bold">@ViewBag.admin</h2>
+                    </div>
+                    <div class="icon-box bg-primary text-white">
+                        <i class="fa fa-user"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
-
-
-
-
 </div>
 
+<style>
+    .stat-card {
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+    }
 
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+        }
 
- <div class="row">
-
-
-    <div class="col-md-6 col-xl-3">
-        <div class="card social-widget-card bg-primary">
-            <div class="card-body">
-                <h3 class="text-white m-0">@ViewBag.ReferanceAvarage </h3>
-                <span class="m-t-10">Referanslarım Puan Ortalaması</span>
-                <i class="fa fa-star"></i>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="col-md-6 col-xl-3">
-        <div class="card social-widget-card bg-info">
-            <div class="card-body">
-                <h3 class="text-white m-0">@ViewBag.WorkYear </h3>
-                <span class="m-t-10">Çalışma Sürem</span>
-                <i class="fa fa-suitcase"></i>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="col-md-6 col-xl-3">
-        <div class="card social-widget-card bg-dark">
-            <div class="card-body">
-                <h3 class="text-white m-0">@ViewBag.companyCount</h3>
-                <span class="m-t-10">Çalıştığım Şirket Sayısı</span>
-                <i class="fa fa-building"></i>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="col-md-6 col-xl-3">
-        <div class="card social-widget-card bg-danger">
-            <div class="card-body">
-                <h3 class="text-white m-0">@ViewBag.TheMostMaxReview</h3>
-                <span class="m-t-10">En Yüksek Puan Veren Kişi</span>
-                <i class="fa fa-user"></i>
-            </div>
-        </div>
-    </div>
-
-
-         </div>
+    .icon-box {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        font-size: 1.5rem;
+    }
+</style>

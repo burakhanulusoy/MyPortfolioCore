@@ -34,6 +34,55 @@ namespace Portfolio.Web.Controllers
 
             ViewBag.TheMostMaxReview = context.Testimonials.OrderByDescending(x => x.Review).Select(x => x.Name).FirstOrDefault();
 
+            ViewBag.SkillCount=context.Skills.Count();
+
+            ViewBag.ReadMessage = context.UserMessages.Count(x => x.IsRead == true);
+
+            ViewBag.messagaCount=context.Testimonials.Select(x=>x.Name).Distinct().Count();
+
+
+            int longatime = 0;
+            int year = 0;
+            string company = "";
+
+            foreach(var item in context.Expreinces)
+            {
+
+                if(string.IsNullOrEmpty(item.EndYear))
+                {
+                    year = DateTime.Now.Year;
+                }
+                else
+                {
+                    year = int.Parse(item.EndYear) ;
+                }
+
+
+
+                if (longatime <= year-item.StartYear)
+                {
+                    longatime = year - item.StartYear;
+                    company = item.Company;
+                    
+                }
+
+
+
+            }
+
+            ViewBag.longCompany=company;
+            ViewBag.longtime=longatime;
+
+
+
+            ViewBag.Review = context.Testimonials.OrderBy(x=>x.Review).Select(x=>x.Name).FirstOrDefault();
+
+
+
+            ViewBag.admin = context.Users.Count();
+
+
+
             return View();
         }
 

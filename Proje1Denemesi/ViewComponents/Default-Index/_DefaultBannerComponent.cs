@@ -7,7 +7,7 @@ namespace Portfolio.Web.ViewComponents.Default_Index
     {
         public IViewComponentResult Invoke()
         {
-            var values=context.Banners.ToList();
+            var values=context.Banners.OrderByDescending(x=>x.BannerId).FirstOrDefault();
             return View(values);
         }
     }

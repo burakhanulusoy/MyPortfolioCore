@@ -1,0 +1,88 @@
+﻿@model User
+@{
+    ViewData["Title"] = "Profil Güncelle";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0 rounded-3">
+                <div class="card-header bg-success text-white text-center">
+                    <h4>Profil Güncelle</h4>
+                </div>
+                <div class="card-body">
+                    <form id="updateForm" method="post">
+
+                        <input type="hidden" asp-for="UserId" />
+                        <input type="hidden" asp-for="FirstName" />
+                        <input type="hidden" asp-for="LastName" />
+
+                        <div class="mb-3">
+                            <label class="form-label">Kullanıcı Adı</label>
+                            <input type="text" asp-for="UserName" class="form-control" />
+                            <span class="text-danger" asp-validation-for="UserName"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Mevcut Şifre</label>
+                            <input type="password" id="oldPassword" class="form-control" placeholder="Eski şifrenizi girin" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Yeni Şifre</label>
+                            <input type="password" id="newPassword" asp-for="Password" class="form-control" placeholder="Yeni şifrenizi girin" required />
+                            <span class="text-danger" asp-validation-for="Password"></span>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success">Güncelle</button>
+                        </div>
+                    </form>
+
+                    <!-- Mesaj alanı -->
+                    <div id="alertBox" class="alert mt-3 d-none" role="alert"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Backend'den gelen gerçek şifre (örnek amaçlı, aslında burada tutmak güvenli değil)
+    const currentPassword = "@Model.Password";
+
+    const form = document.getElementById("updateForm");
+    const alertBox = document.getElementById("alertBox");
+
+    form.addEventListener("submit", function (e) {
+        e.preventDefault(); // formun direkt post edilmesini engelle
+
+        const oldPassword = document.getElementById("oldPassword").value;
+        const newPassword = document.getElementById("newPassword").value;
+
+        // Eski şifre doğru mu?
+        if (oldPassword !== currentPassword) {
+            showAlert("Mevcut şifrenizi yanlış girdiniz!", "danger");
+            return;
+        }
+
+        // Yeni şifre boş olamaz
+        if (newPassword.trim() === "") {
+            showAlert("Yeni şifre boş olamaz!", "warning");
+            return;
+        }
+
+        // Şifre değiştiyse başarılı mesajı
+        showAlert("Profil başarıyla güncellendi ✅", "success");
+
+        // Backend'e post etmek istersen:
+        form.submit();
+    });
+
+    function showAlert(message, type) {
+        alertBox.textContent = message;
+        alertBox.className = "alert alert-" + type;
+        alertBox.classList.remove("d-none");
+    }
+</script>
