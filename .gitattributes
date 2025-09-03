@@ -61,3 +61,16 @@
 #*.PDF   diff=astextplain
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
+# Build çıktıları ve vendor dosyaları sayılmasın
+bin/* linguist-vendored
+obj/* linguist-vendored
+wwwroot/* linguist-vendored
+
+# CSS, JS gibi dosyalar dil algısına dahil olmasın
+*.css linguist-vendored
+*.scss linguist-vendored
+*.js linguist-vendored
+*.map linguist-vendored
+
+# Razor sayfaları yine C#'a sayılır
+*.cshtml linguist-language=C#
